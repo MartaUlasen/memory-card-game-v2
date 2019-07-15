@@ -1,0 +1,71 @@
+
+$clock-height: 36px;
+$card-margin: 4px;
+$numberOfRows: 3;
+$game-padding: 16px;
+$card-height: calc((100vh - #{$game-padding}*2 - #{$clock-height} - #{$numberOfRows} * 2 * #{$card-margin} ) / #{$numberOfRows});
+$FLIP_TIME: 0.2s;
+
+.card {
+	position: relative;
+    width: calc(#{$card-height}/1.4);
+	height: $card-height;
+	margin: $card-margin;
+	border-radius: 10px;
+	background-color: transparent;
+    transition: transform $FLIP_TIME ease-in;
+	transform-style: preserve-3d;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.5);
+    list-style: none;
+}
+.card--clickable {
+	cursor: pointer;
+}
+.card--flipped {
+	transform: rotateY(180deg);
+	cursor: default;
+}
+
+.card--hidden {
+	visibility: hidden;
+	cursor: default;
+}
+
+
+.card__back {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	backface-visibility: hidden;
+	border-radius: 10px;
+	background-color: white;
+	background-image: repeating-linear-gradient(45deg, 
+		transparent 0, transparent 15px, 
+		rgba(200, 0, 0, 0.5) 15px, rgba(200, 0, 0, 0.5) 25px, 
+		transparent 25px, transparent 45px,
+		rgba(200, 0, 0, 0.5) 45px, rgba(200, 0, 0, 0.5) 70px),
+		repeating-linear-gradient(-45deg, 
+		transparent 0, transparent 15px, 
+		rgba(200, 0, 0, 0.5) 15px, rgba(200, 0, 0, 0.5) 25px, 
+		transparent 25px, transparent 45px,
+		rgba(200, 0, 0, 0.5) 45px, rgba(200, 0, 0, 0.5) 70px);
+}
+
+.card__face {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+	align-items: center;
+	backface-visibility: hidden;
+    font-size: 100px;
+    color: grey;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    transform: rotateY(180deg);
+}
