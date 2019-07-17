@@ -1,23 +1,33 @@
 .cards {
     display: block;
 	padding: 0;
-	list-style: none;
+    list-style: none;
+    margin: 0 -4px -4px 0;
+    @media only screen and (min-width: 768px) {
+        margin: 0 -1rem -1rem 0;
+	}
 }
 
 .card {
-    width: 100%;
+    width: 56px;
     height: 100%;
     min-height: calc(56px * 1.58);
+    margin: 0 4px 4px 0;
     @media only screen and (min-width: 375px) {
+        width: 68px;
         height: calc(68px * 1.58);
 	}
     @media only screen and (min-width: 414px) {
+        width: 74px;
         height: calc(74px * 1.58);
 	}
     @media only screen and (min-width: 768px) {
+        width: 100px;
         height: calc(100px * 1.58);
+        margin: 0 1rem 1rem 0;
 	}
     @media only screen and (min-width: 1024px) {
+        width: 136px;
         height: calc(136px * 1.58);
 	}
 }
@@ -29,16 +39,26 @@
         grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
 		grid-gap: 4px;
 		list-style: none;
-		margin: 0 auto;
+		margin: 0 auto 1rem;
+    }
+    .card {
+        width: 56px;
+        margin: 0;
     }
     @media only screen and (min-width: 375px) {
         .cards {
             grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
         }
+        .card {
+            width: 100%;
+        }
 	}
     @media only screen and (min-width: 414px) {
         .cards {
             grid-template-columns: repeat(auto-fill, minmax(74px, 1fr));
+        }
+        .card {
+            width: 100%;
         }
 	}
     @media only screen and (min-width: 768px) {
@@ -46,16 +66,21 @@
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             grid-gap: 1rem;
         }
+        .card {
+            width: 100%;
+        }
 	}
     @media only screen and (min-width: 1024px) {
         .cards {
             grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
-            grid-gap: 1rem;
+        }
+        .card {
+            width: 100%;
         }
 	}
     @media only screen and (min-width: 1200px) {
-        .cards {
-            grid-gap: 1rem;
+        .card {
+            width: 100%;
         }
 	}
 }
