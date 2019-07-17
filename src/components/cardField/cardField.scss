@@ -1,6 +1,6 @@
 .cards {
     display: block;
-	padding: 0 1rem;
+	padding: 0;
 	list-style: none;
 }
 
@@ -43,21 +43,18 @@
 	}
     @media only screen and (min-width: 768px) {
         .cards {
-            padding: 0 2rem;
             grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
             grid-gap: 1rem;
         }
 	}
     @media only screen and (min-width: 1024px) {
         .cards {
-            padding: 0 calc(50% - 480px);
             grid-template-columns: repeat(auto-fill, minmax(136px, 1fr));
             grid-gap: 1rem;
         }
 	}
     @media only screen and (min-width: 1200px) {
         .cards {
-            padding: 0 calc(50% - 600px);
             grid-gap: 1rem;
         }
 	}
