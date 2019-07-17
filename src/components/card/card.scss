@@ -1,23 +1,18 @@
 
 $clock-height: 36px;
-$card-margin: 4px;
 $numberOfRows: 3;
 $game-padding: 16px;
-$card-height: calc((100vh - #{$game-padding}*2 - #{$clock-height} - #{$numberOfRows} * 2 * #{$card-margin} ) / #{$numberOfRows});
 $FLIP_TIME: 0.2s;
 
 .card {
-	position: relative;
-    width: calc(#{$card-height}/1.4);
-	height: $card-height;
-	margin: $card-margin;
-	border-radius: 10px;
-	background-color: transparent;
+    display: inline-block;
+    text-align: left;
     transition: transform $FLIP_TIME ease-in;
-	transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    border-radius: 10px;
     box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.5);
-    list-style: none;
 }
+
 .card--clickable {
 	cursor: pointer;
 }

@@ -11,16 +11,16 @@ export default class Menu extends Component {
 	render() {
 		return (
             <div className="menu">
-                <div className="menu__title">Select the difficulty of the game</div>
+                <div className="title">Select the difficulty of the game</div>
                 <ul className="menu__list">
                     <li className="menu__item">
-                        <button type="button" onClick={() => {this.onClick(LEVEL_PARAMS.easy)}}>Easy</button>
+                        <button className="button" type="button" onClick={() => {this.onClick(LEVEL_PARAMS.easy)}}>Easy</button>
                     </li>
                     <li className="menu__item">
-                        <button type="button" onClick={() => {this.onClick(LEVEL_PARAMS.medium)}}>Medium</button>
+                        <button className="button" type="button" onClick={() => {this.onClick(LEVEL_PARAMS.medium)}}>Medium</button>
                     </li>
                     <li className="menu__item">
-                        <button type="button" onClick={() => {this.onClick(LEVEL_PARAMS.hard)}}>Hard</button>
+                        <button className="button" type="button" onClick={() => {this.onClick(LEVEL_PARAMS.hard)}}>Hard</button>
                     </li>
                 </ul>
             </div>

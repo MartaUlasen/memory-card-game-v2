@@ -9,7 +9,7 @@ const LEVEL_PARAMS = {
     },
 	hard: { 
         timeout: 5,
-        countOfPairs: 4,
+        countOfPairs: 12,
     },
 };
 
