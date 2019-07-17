@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet');
+
+body {
+    margin: 0;
+    background-color: #f6e6d7;
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.6rem;
+    color: #4f433c;
+    font-weight: bold;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+
+.button {
+    padding: 2px 8px;
+    background-color: transparent;
+    font-size: 1.4rem;
+    font-family: 'Lato', sans-serif;
+    border: 2px dashed #b0a093;
+    transition: border 0.2s ease-in;
+    &:hover {
+        border: 2px dashed #4f433c;
+        cursor: pointer;
+    }
+}
