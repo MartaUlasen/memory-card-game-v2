@@ -5,8 +5,6 @@ class Timer extends Component {
         super(props);
         this.id = null;
         this.time = this.props.timeout;
-        this.changeTimeout = this.props.changeTimeout;
-        this.isGameLose = this.props.isGameLose;
     }
     componentDidMount = () => {
         this.start();
@@ -16,19 +14,23 @@ class Timer extends Component {
         this.setState({ time : 0 });
     }
     increment = () => {
-        if (this.time > 0) {
+        const { changeTimeout, isGameLose, isPlaying } = this.props;
+        console.log(isPlaying)
+        if (this.time > 0 && isPlaying === true) {
             this.time = this.time - 1;
-            this.changeTimeout(this.time);
-		} else {
+            changeTimeout(this.time);
+        } else if(this.isPlaying === false) {
+            this.pause();
+        } else if (this.time === 0) {
             this.stop();
-            this.isGameLose();
+            isGameLose();
 		}
     }
     start = () => {
 		this.id = setInterval(this.increment, 1000);
     }
     pause = () => {
-		clearInterval(this.id);
+        clearInterval(this.id);
 	}
 
 	render() {

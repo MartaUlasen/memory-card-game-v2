@@ -21,6 +21,7 @@ class Game extends Component {
         cards: [],
         preventDefaultClick: false,
         gameOver: null,
+        isPlaying: true,
     }
     
     componentDidMount = () => {
@@ -42,11 +43,20 @@ class Game extends Component {
         this.setState({ timeout: timeout });
     }
 
-    startPlay = (level) => {
+    startGame = (level) => {
         this.changeStateOfMenu(false);
         this.changeLevelOfGame(level);
         this.changeTimeout(level.timeout);
         this.generateCards(level.countOfPairs);
+    }
+
+    pauseResumeGame = () => {
+        const { isPlaying, preventDefaultClick } = this.state;
+        console.log(isPlaying, preventDefaultClick)
+        this.setState({ 
+            isPlaying: !isPlaying,
+            preventDefaultClick: !preventDefaultClick,
+        });
     }
 
     generateCards = (countOfPairs) => {
@@ -189,8 +199,9 @@ class Game extends Component {
             timeout, 
             showMenu, 
             cards, 
-            preventDefaultClick, 
-            gameOver 
+            preventDefaultClick,
+            isPlaying, 
+            gameOver,
         } = this.state;
 
         return (
@@ -198,7 +209,7 @@ class Game extends Component {
                 {
                     showMenu === true 
                     ? <Menu 
-                        startPlay={this.startPlay}
+                        startPlay={this.startGame}
                     />
                     : gameOver !== null
                     ? <Score 
@@ -213,6 +224,8 @@ class Game extends Component {
                         cardClickHandler={this.cardClickHandler}
                         preventDefaultClick={preventDefaultClick}
                         isGameLose={this.isGameLose}
+                        isPlaying={isPlaying}
+                        pauseResumeGame={this.pauseResumeGame}
                     /> 
                     
                 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Timer from 'components/timer';
 import CardField from 'components/cardField';
+import './board.scss';
 
 class Board extends Component {
 	render() {
@@ -11,15 +12,29 @@ class Board extends Component {
             cards,
             cardClickHandler,
             preventDefaultClick,
-            isGameLose
+            isGameLose,
+            isPlaying,
+            pauseResumeGame,
         } = this.props;
+        const buttonTitle = isPlaying ? 'Pause' : "Resume";
+
 		return (
             <div className="board">
-                <Timer 
-                    timeout={timeout}
-                    changeTimeout={changeTimeout}
-                    isGameLose={isGameLose}
-                />
+                <div className="board__header">
+                    <Timer 
+                        timeout={timeout}
+                        changeTimeout={changeTimeout}
+                        isGameLose={isGameLose}
+                        isPlaying={isPlaying}
+                    />
+                    <button 
+                        className="button"
+                        type="button"
+                        onClick={pauseResumeGame}
+                    >
+                        {buttonTitle}
+                    </button>
+                </div>
                 <CardField 
                     levelParams={levelParams}
                     cards={cards}

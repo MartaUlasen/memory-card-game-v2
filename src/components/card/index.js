@@ -5,19 +5,20 @@ class Card extends PureComponent {
     clickHandler = () => {
         const { card, index, cardClickHandler, preventDefaultClick } = this.props;
         const { frontSide } = card;
-        if (!frontSide || !preventDefaultClick){
+        if (!frontSide && !preventDefaultClick){
             cardClickHandler(index);
         }
     }
 	render() {
         const { title, frontSide, hidden } = this.props.card;
+        const { preventDefaultClick } = this.props;
         let className = 'card';
 
         if (frontSide) {
             className = 'card card--flipped';
         } else if (hidden) {
             className = 'card card--hidden';
-        } else if (!frontSide) {
+        } else if (!frontSide && !preventDefaultClick) {
             className = className + ' card--clickable';
         };
         
