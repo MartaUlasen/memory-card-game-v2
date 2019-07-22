@@ -22,9 +22,9 @@ class Game extends Component {
         preventDefaultClick: false,
         gameOver: null,
         isPlaying: true,
+        id: null,
     }
 
-    
     changeStateOfMenu = (showMenu) => {
         this.setState({ showMenu });
     }
@@ -42,6 +42,7 @@ class Game extends Component {
         this.changeLevelOfGame(level);
         this.changeTimeout(level.timeout);
         this.generateCards(level.countOfPairs);
+        this.start();
     }
 
     pauseResumeGame = () => {
@@ -185,7 +186,33 @@ class Game extends Component {
         this.changeStateOfMenu(true);
         this.clearGameOverState();
     }
+    
+    stop = () => {
+		clearInterval(this.id);
+        this.setState({ time : 0 });
+    }
 
+    increment = () => {
+        let { timeout, isPlaying } = this.state;
+        if (timeout > 0 && isPlaying === true) {
+            timeout = timeout - 1;
+            this.changeTimeout(timeout);
+        } else if(isPlaying === false) {
+            this.pause();
+        } else if (timeout === 0) {
+            this.stop();
+            this.isGameLose();
+		}
+    }
+
+    start = () => {
+        this.setState({ id : setInterval(this.increment, 1000)});
+    }
+
+    pause = () => {
+        clearInterval(this.id);
+    }
+    
 	render() {
         const { 
             levelParams, 
@@ -211,12 +238,10 @@ class Game extends Component {
                     />
                     : <Board 
                         timeout={timeout}
-                        changeTimeout={this.changeTimeout}
                         levelParams={levelParams}
                         cards={cards}
                         cardClickHandler={this.cardClickHandler}
                         preventDefaultClick={preventDefaultClick}
-                        isGameLose={this.isGameLose}
                         isPlaying={isPlaying}
                         pauseResumeGame={this.pauseResumeGame}
                     /> 

@@ -16,6 +16,7 @@ class AssetsPreloader extends Component {
         console.log(preload, srcs);
 
         preload.fetch(srcs).then(items => {
+            console.log(items);
             this.setState({ 
                 isLoading: false,
             });

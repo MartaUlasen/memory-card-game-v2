@@ -6,13 +6,11 @@ import './board.scss';
 class Board extends Component {
 	render() {
         const { 
-            timeout, 
-            changeTimeout, 
+            timeout,
             levelParams, 
             cards,
             cardClickHandler,
             preventDefaultClick,
-            isGameLose,
             isPlaying,
             pauseResumeGame,
         } = this.props;
@@ -23,9 +21,6 @@ class Board extends Component {
                 <div className="board__header">
                     <Timer 
                         timeout={timeout}
-                        changeTimeout={changeTimeout}
-                        isGameLose={isGameLose}
-                        isPlaying={isPlaying}
                     />
                     <button 
                         className="button"
