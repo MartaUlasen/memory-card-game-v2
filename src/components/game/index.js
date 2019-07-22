@@ -23,13 +23,7 @@ class Game extends Component {
         gameOver: null,
         isPlaying: true,
     }
-    
-    componentDidMount = () => {
-        const { levelParams } = this.state;
 
-        this.changeTimeout(levelParams.timeout);
-        this.generateCards(levelParams.countOfPairs);
-    }
     
     changeStateOfMenu = (showMenu) => {
         this.setState({ showMenu });
@@ -52,7 +46,6 @@ class Game extends Component {
 
     pauseResumeGame = () => {
         const { isPlaying, preventDefaultClick } = this.state;
-        console.log(isPlaying, preventDefaultClick)
         this.setState({ 
             isPlaying: !isPlaying,
             preventDefaultClick: !preventDefaultClick,
@@ -233,4 +226,5 @@ class Game extends Component {
 		)
     }
 }
+
 export default Game;

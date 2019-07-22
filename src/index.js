@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import Game from './components/game';
+import AssetsPreloader from './components/assetsPreloader';
 
-ReactDOM.render(<Game />, document.getElementById('root'));
+ReactDOM.render(<AssetsPreloader />, document.getElementById('root'));
 

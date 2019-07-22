@@ -13,4 +13,19 @@ const LEVEL_PARAMS = {
     },
 };
 
-export { LEVEL_PARAMS };
+const CARD_IMAGES = [
+    "img/1.JPG",
+    "img/2.JPG",
+    "img/3.JPG",
+    "img/4.JPG",
+    "img/5.JPG",
+    "img/6.JPG",
+    "img/7.JPG",
+    "img/8.JPG",
+    "img/9.JPG",
+    "img/10.JPG",
+    "img/11.JPG",
+    "img/12.JPG",
+];
+
+export { LEVEL_PARAMS, CARD_IMAGES };

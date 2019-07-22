@@ -27,3 +27,22 @@ code {
         cursor: pointer;
     }
 }
+
+.icon-loading {
+	width: 100%;
+	margin: 80px auto 0;
+	animation-name: spin;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    color: #b0a093;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}

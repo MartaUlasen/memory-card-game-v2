@@ -15,7 +15,6 @@ class Timer extends Component {
     }
     increment = () => {
         const { changeTimeout, isGameLose, isPlaying } = this.props;
-        console.log(isPlaying)
         if (this.time > 0 && isPlaying === true) {
             this.time = this.time - 1;
             changeTimeout(this.time);
