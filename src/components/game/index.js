@@ -228,24 +228,23 @@ class Game extends Component {
             <div className="game">
                 {
                     showMenu === true 
-                    ? <Menu 
-                        startPlay={this.startGame}
-                    />
-                    : gameOver !== null
-                    ? <Score 
-                        gameOver={gameOver}
-                        startAnotherGame={this.startAnotherGame}
-                    />
-                    : <Board 
-                        timeout={timeout}
-                        levelParams={levelParams}
-                        cards={cards}
-                        cardClickHandler={this.cardClickHandler}
-                        preventDefaultClick={preventDefaultClick}
-                        isPlaying={isPlaying}
-                        pauseResumeGame={this.pauseResumeGame}
-                    /> 
-                    
+                        ? <Menu 
+                            startPlay={this.startGame}
+                        />
+                        : gameOver !== null
+                            ? <Score 
+                                gameOver={gameOver}
+                                startAnotherGame={this.startAnotherGame}
+                            />
+                            : <Board
+                                timeout={timeout}
+                                levelParams={levelParams}
+                                cards={cards}
+                                cardClickHandler={this.cardClickHandler}
+                                preventDefaultClick={preventDefaultClick}
+                                isPlaying={isPlaying}
+                                pauseResumeGame={this.pauseResumeGame}
+                            />
                 }
             </div>
 		)

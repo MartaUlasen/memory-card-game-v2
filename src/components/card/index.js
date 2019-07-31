@@ -12,8 +12,7 @@ class Card extends PureComponent {
         }
     }
 	render() {
-        const { frontSide, hidden, title } = this.props.card;
-        const { preventDefaultClick } = this.props;
+        const { preventDefaultClick, card: { frontSide, hidden, title } } = this.props;
         let className = 'card';
 
         if (frontSide) {

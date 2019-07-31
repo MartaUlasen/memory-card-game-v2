@@ -1,39 +1,30 @@
-import React, { Component } from 'react';
-import Preload from 'preload-it';
-import Game from 'components/game';
-import { Loader } from 'react-feather';
+import { Component } from 'react';
+import Preloader from '@webdeveric/image-preloader';
 import { CARD_IMAGES } from 'const';
 
 class AssetsPreloader extends Component {
     state = {
-        isLoading: true,
+        isLoading: false,
     }
     
     preloadImages = () => {
-        const prefix = window.location.origin;
-        const preload = Preload();
-        const srcs = CARD_IMAGES.map(item => prefix+'/'+item);
-        console.log(preload, srcs);
-
-        preload.fetch(srcs).then(items => {
-            console.log(items);
-            this.setState({ 
-                isLoading: false,
-            });
+        let loader = new Preloader( { 
+            images: CARD_IMAGES, 
+            timeout: 0, 
+        } );
+        this.setState({ isLoading: true });
+        loader.start().then( results => {
+            this.setState({ isLoading: false });
         });
     }
+
     componentDidMount = () => {
         this.preloadImages();
     }
 
-
     render() {
         const { isLoading } = this.state;
-        return (
-            isLoading ? 
-            <Loader className="icon-loading" size={30} /> :
-            <Game/>
-        )
+        return this.props.render(isLoading);
     }
 }
 

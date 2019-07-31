@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@webdeveric/image-preloader": "^0.5.0",
     "node-sass": "^4.12.0",
-    "preload-it": "^1.2.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-feather": "^2.0.3",
