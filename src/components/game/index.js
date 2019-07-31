@@ -21,7 +21,7 @@ class Game extends Component {
         cards: [],
         preventDefaultClick: false,
         gameOver: null,
-        isPlaying: true,
+        isPlaying: false,
         id: null,
     }
 
@@ -42,7 +42,10 @@ class Game extends Component {
         this.changeLevelOfGame(level);
         this.changeTimeout(level.timeout);
         this.generateCards(level.countOfPairs);
-        this.start();
+        this.startTimer();
+        this.setState({ 
+            isPlaying: true,
+        });
     }
 
     pauseResumeGame = () => {
@@ -188,8 +191,12 @@ class Game extends Component {
     }
     
     stop = () => {
-		clearInterval(this.id);
-        this.setState({ time : 0 });
+        let { id } = this.state;
+        this.setState({ 
+            timeout : 0,
+            isPlaying: false, 
+            id : clearInterval(id),
+        });
     }
 
     increment = () => {
@@ -205,12 +212,15 @@ class Game extends Component {
 		}
     }
 
-    start = () => {
+    startTimer = () => {
         this.setState({ id : setInterval(this.increment, 1000)});
     }
 
     pause = () => {
-        clearInterval(this.id);
+        let { id } = this.state; 
+        this.setState({
+            id : clearInterval(id),
+        });
     }
     
 	render() {
