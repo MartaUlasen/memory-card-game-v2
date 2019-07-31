@@ -49,10 +49,14 @@ class Game extends Component {
     }
 
     pauseResumeGame = () => {
-        const { isPlaying, preventDefaultClick } = this.state;
+        const { isPlaying, preventDefaultClick, id } = this.state;
+        const updatedId = isPlaying 
+            ? clearInterval(id)
+            : setInterval(this.increment, 1000) ;
         this.setState({ 
             isPlaying: !isPlaying,
             preventDefaultClick: !preventDefaultClick,
+            id: updatedId,
         });
     }
 
@@ -128,9 +132,13 @@ class Game extends Component {
                 return item;
             }
         });
-        
-        
-        const gameOver = newCardsWithHiddenCards.every(isHidden) ? 'win' : null;
+
+        let gameOver = null;
+        let updatedIsPlaying = true;
+        if (newCardsWithHiddenCards.every(isHidden)) {
+            updatedIsPlaying = false;
+            gameOver = 'win';
+        }
 
         setTimeout(() => { 
             this.setState({
@@ -141,7 +149,7 @@ class Game extends Component {
                     cards: newCardsWithHiddenCards,
                     preventDefaultClick: false,
                     gameOver: gameOver,
-                    timeout: 0,
+                    isPlaying: updatedIsPlaying,
                 })
             }, 0)
         }, 250);
@@ -205,7 +213,7 @@ class Game extends Component {
             timeout = timeout - 1;
             this.changeTimeout(timeout);
         } else if(isPlaying === false) {
-            this.pause();
+            this.pauseTimer();
         } else if (timeout === 0) {
             this.stop();
             this.isGameLose();
@@ -216,7 +224,7 @@ class Game extends Component {
         this.setState({ id : setInterval(this.increment, 1000)});
     }
 
-    pause = () => {
+    pauseTimer = () => {
         let { id } = this.state; 
         this.setState({
             id : clearInterval(id),
@@ -233,7 +241,6 @@ class Game extends Component {
             isPlaying, 
             gameOver,
         } = this.state;
-
         return (
             <div className="game">
                 {
