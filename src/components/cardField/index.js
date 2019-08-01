@@ -4,7 +4,7 @@ import './cardField.scss';
 
 class CardField extends PureComponent {
 	render() {
-        const { cards, cardClickHandler, preventDefaultClick } = this.props;
+        const { assets, cards, cardClickHandler, preventDefaultClick } = this.props;
         let className = '';
         const clientWidth = document.documentElement.clientWidth;
         const clientHeight = document.documentElement.clientHeight;
@@ -22,6 +22,7 @@ class CardField extends PureComponent {
                     return (
                         <Card
                             key={index}
+                            asset={assets[item.title]}
                             index={index}
                             card={item}
                             cardClickHandler={cardClickHandler}

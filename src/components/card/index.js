@@ -1,7 +1,5 @@
 import React, { PureComponent  } from 'react';
-import { CARD_IMAGES } from 'const';
 import './card.scss';
-
 
 class Card extends PureComponent {
     clickHandler = () => {
@@ -12,7 +10,7 @@ class Card extends PureComponent {
         }
     }
 	render() {
-        const { preventDefaultClick, card: { frontSide, hidden, title } } = this.props;
+        const { asset, preventDefaultClick, card: { frontSide, hidden } } = this.props;
         let className = 'card';
 
         if (frontSide) {
@@ -27,7 +25,7 @@ class Card extends PureComponent {
             <li className={className} onClick={this.clickHandler}>
                 <div className="card__back"></div>
                 <div className="card__face">
-                <img className="card__image" src={CARD_IMAGES[title]} alt=""/>
+                    {<img className="card__image" src={asset.src} alt=""/>}
                 </div>
             </li>
 		)

@@ -5,7 +5,8 @@ import './board.scss';
 
 class Board extends Component {
 	render() {
-        const { 
+        const {
+            assets,
             timeout,
             levelParams, 
             cards,
@@ -15,7 +16,7 @@ class Board extends Component {
             pauseResumeGame,
         } = this.props;
         const buttonTitle = isPlaying ? 'Pause' : "Resume";
-
+        
 		return (
             <div className="board">
                 <div className="board__header">
@@ -31,6 +32,7 @@ class Board extends Component {
                     </button>
                 </div>
                 <CardField
+                    assets={assets}
                     levelParams={levelParams}
                     cards={cards}
                     cardClickHandler={cardClickHandler}

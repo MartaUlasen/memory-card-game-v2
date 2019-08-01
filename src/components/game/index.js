@@ -5,6 +5,8 @@ import Score from 'components/score';
 import { LEVEL_PARAMS } from 'const';
 import './game.scss';
 
+const FLIP_CARD_TIME = 250;
+
 function compareRandom(a, b) {
     return Math.random() - 0.5;
 }
@@ -24,6 +26,8 @@ class Game extends Component {
         isPlaying: false,
         id: null,
     }
+
+    timerId = null
 
     changeStateOfMenu = (showMenu) => {
         this.setState({ showMenu });
@@ -49,15 +53,22 @@ class Game extends Component {
     }
 
     pauseResumeGame = () => {
-        const { isPlaying, preventDefaultClick, id } = this.state;
-        const updatedId = isPlaying 
-            ? clearInterval(id)
-            : setInterval(this.increment, 1000) ;
+        const { isPlaying, preventDefaultClick } = this.state;
+
+        if (isPlaying) {
+            clearInterval(this.timerId);
+            this.timerId = null;
+        }
+        else {
+            this.timerId = setInterval(this.increment, 1000);
+        }
+
         this.setState({ 
             isPlaying: !isPlaying,
             preventDefaultClick: !preventDefaultClick,
-            id: updatedId,
         });
+        
+        console.log('pauseResumeGame:', !preventDefaultClick)
     }
 
     generateCards = (countOfPairs) => {
@@ -102,6 +113,7 @@ class Game extends Component {
     }
 
     closePair = (cards, indexOfOpenCards) => {
+        const { isPlaying } = this.state;
         const newCards = cards.map((item, index) => {
             if (index === indexOfOpenCards[0] || index === indexOfOpenCards[1]) {
                 return { ...item, frontSide: false };
@@ -109,12 +121,15 @@ class Game extends Component {
                 return item;
             }
         });
+        
+        const preventDefaultClick = isPlaying ? false : true;
+        console.log('closePair:', preventDefaultClick)
         setTimeout(()=> {
             this.setState({
                 cards: newCards,
-                preventDefaultClick: false,
+                preventDefaultClick: preventDefaultClick,
             });
-        }, 250);
+        }, FLIP_CARD_TIME);
     }
 
     hidePair = (cards, indexOfOpenCards) => {
@@ -152,7 +167,7 @@ class Game extends Component {
                     isPlaying: updatedIsPlaying,
                 })
             }, 0)
-        }, 250);
+        }, FLIP_CARD_TIME);
     }
 
     checkPair = (cards, renewedCards, indexOfOpenCards) => {
@@ -174,6 +189,7 @@ class Game extends Component {
             indexOfOpenCards = this.countOpenedCards(renewedCards);
 
             if (indexOfOpenCards.length === 2) {
+                console.log('cardClickHandler:', true)
                 this.setState({
                     preventDefaultClick: true,
                 })
@@ -199,12 +215,13 @@ class Game extends Component {
     }
     
     stop = () => {
-        let { id } = this.state;
         this.setState({ 
             timeout : 0,
-            isPlaying: false, 
-            id : clearInterval(id),
+            isPlaying: false,
         });
+
+        clearInterval(this.timerId);
+        this.timerId = null;
     }
 
     increment = () => {
@@ -221,18 +238,17 @@ class Game extends Component {
     }
 
     startTimer = () => {
-        this.setState({ id : setInterval(this.increment, 1000)});
+        this.timerId = setInterval(this.increment, 1000);
     }
 
     pauseTimer = () => {
-        let { id } = this.state; 
-        this.setState({
-            id : clearInterval(id),
-        });
+        clearInterval(this.timerId);
+        this.timerId = null;
     }
     
 	render() {
-        const { 
+        const { assets } = this.props;
+        const {
             levelParams, 
             timeout, 
             showMenu, 
@@ -241,6 +257,7 @@ class Game extends Component {
             isPlaying, 
             gameOver,
         } = this.state;
+
         return (
             <div className="game">
                 {
@@ -254,6 +271,7 @@ class Game extends Component {
                                 startAnotherGame={this.startAnotherGame}
                             />
                             : <Board
+                                assets={assets}
                                 timeout={timeout}
                                 levelParams={levelParams}
                                 cards={cards}

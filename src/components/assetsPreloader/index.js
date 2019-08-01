@@ -1,20 +1,21 @@
 import { Component } from 'react';
 import Preloader from '@webdeveric/image-preloader';
-import { CARD_IMAGES } from 'const';
 
 class AssetsPreloader extends Component {
     state = {
         isLoading: false,
+        assets: [],
     }
     
     preloadImages = () => {
-        let loader = new Preloader( { 
-            images: CARD_IMAGES, 
-            timeout: 0, 
-        } );
+        const { assetUrls } = this.props;
+
+        const loader = new Preloader( { 
+            images: assetUrls,
+        });
         this.setState({ isLoading: true });
-        loader.start().then( results => {
-            this.setState({ isLoading: false });
+        loader.start().then(assets => {
+            this.setState({ isLoading: false, assets: assets.map(a => a.image)});
         });
     }
 
@@ -23,8 +24,8 @@ class AssetsPreloader extends Component {
     }
 
     render() {
-        const { isLoading } = this.state;
-        return this.props.render(isLoading);
+        const { isLoading, assets } = this.state;
+        return this.props.children(isLoading, assets);
     }
 }
 
