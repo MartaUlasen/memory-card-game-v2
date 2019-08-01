@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@webdeveric/image-preloader": "^0.5.0",
+    "imagemin": "^7.0.0",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
