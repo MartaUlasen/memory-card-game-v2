@@ -6,7 +6,7 @@ import { LEVEL_PARAMS } from 'const';
 import AssetsContext from 'context/assetsContext';
 import './game.scss';
 
-const FLIP_CARD_TIME = 250;
+const FLIP_CARD_TIME = 300;
 
 function compareRandom(a, b) {
     return Math.random() - 0.5;
@@ -54,7 +54,7 @@ class Game extends Component {
     }
 
     pauseResumeGame = () => {
-        const { isPlaying, preventDefaultClick } = this.state;
+        const { isPlaying } = this.state;
 
         if (isPlaying) {
             clearInterval(this.timerId);
@@ -66,10 +66,7 @@ class Game extends Component {
 
         this.setState({ 
             isPlaying: !isPlaying,
-            preventDefaultClick: !preventDefaultClick,
         });
-        
-        console.log('pauseResumeGame:', !preventDefaultClick)
     }
 
     generateCards = (countOfPairs) => {
@@ -124,7 +121,6 @@ class Game extends Component {
         });
         
         const preventDefaultClick = isPlaying ? false : true;
-        console.log('closePair:', preventDefaultClick)
         setTimeout(()=> {
             this.setState({
                 cards: newCards,
@@ -190,7 +186,6 @@ class Game extends Component {
             indexOfOpenCards = this.countOpenedCards(renewedCards);
 
             if (indexOfOpenCards.length === 2) {
-                console.log('cardClickHandler:', true)
                 this.setState({
                     preventDefaultClick: true,
                 })

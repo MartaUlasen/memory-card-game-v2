@@ -6,7 +6,7 @@ import AssetsContext from 'context/assetsContext';
 class CardField extends PureComponent {
     static contextType = AssetsContext;
 	render() {
-        const { cards, cardClickHandler, preventDefaultClick } = this.props;
+        const { cards, cardClickHandler, preventDefaultClick, isPlaying } = this.props;
         let className = '';
         const clientWidth = document.documentElement.clientWidth;
         const clientHeight = document.documentElement.clientHeight;
@@ -28,6 +28,7 @@ class CardField extends PureComponent {
                                     asset={value[item.title]}
                                     index={index}
                                     card={item}
+                                    isPlaying={isPlaying}
                                     cardClickHandler={cardClickHandler}
                                     preventDefaultClick={preventDefaultClick}
                             /> 

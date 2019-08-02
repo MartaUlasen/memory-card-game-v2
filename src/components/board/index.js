@@ -31,6 +31,7 @@ class Board extends Component {
                     </button>
                 </div>
                 <CardField
+                    isPlaying={isPlaying}
                     levelParams={levelParams}
                     cards={cards}
                     cardClickHandler={cardClickHandler}
