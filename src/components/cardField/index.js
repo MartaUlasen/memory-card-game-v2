@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
 import Card from 'components/card';
 import './cardField.scss';
+import AssetsContext from 'context/assetsContext';
 
 class CardField extends PureComponent {
+    static contextType = AssetsContext;
 	render() {
-        const { assets, cards, cardClickHandler, preventDefaultClick } = this.props;
+        const { cards, cardClickHandler, preventDefaultClick } = this.props;
         let className = '';
         const clientWidth = document.documentElement.clientWidth;
         const clientHeight = document.documentElement.clientHeight;
@@ -20,14 +22,17 @@ class CardField extends PureComponent {
             <ul className={className}>
                 {cards.map((item, index) => {
                     return (
-                        <Card
-                            key={index}
-                            asset={assets[item.title]}
-                            index={index}
-                            card={item}
-                            cardClickHandler={cardClickHandler}
-                            preventDefaultClick={preventDefaultClick}
-                        />
+                        <AssetsContext.Consumer key={index}>
+                            {(value) => (
+                                <Card
+                                    asset={value[item.title]}
+                                    index={index}
+                                    card={item}
+                                    cardClickHandler={cardClickHandler}
+                                    preventDefaultClick={preventDefaultClick}
+                            /> 
+                            )}
+                        </AssetsContext.Consumer>
                     )
                 })}
             </ul>

@@ -6,7 +6,6 @@ import './board.scss';
 class Board extends Component {
 	render() {
         const {
-            assets,
             timeout,
             levelParams, 
             cards,
@@ -32,7 +31,6 @@ class Board extends Component {
                     </button>
                 </div>
                 <CardField
-                    assets={assets}
                     levelParams={levelParams}
                     cards={cards}
                     cardClickHandler={cardClickHandler}

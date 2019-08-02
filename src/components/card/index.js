@@ -31,4 +31,5 @@ class Card extends PureComponent {
 		)
     }
 }
+
 export default Card;
