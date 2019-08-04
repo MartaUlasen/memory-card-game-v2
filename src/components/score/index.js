@@ -5,12 +5,13 @@ class Score extends PureComponent {
         const { startAnotherGame } = this.props;
         startAnotherGame();
     }
+
 	render() {
         const { gameOver } = this.props;
 		return (
             <div className="score">
                 <div className="title">
-                    {`You are ${gameOver}!`}
+                    {`You ${gameOver}!`}
                 </div>
                 <button 
                     className="button"

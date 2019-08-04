@@ -1,4 +1,5 @@
 import React, { PureComponent  } from 'react';
+import AssetsContext from 'context/assetsContext';
 import './card.scss';
 
 class Card extends PureComponent {
@@ -10,7 +11,7 @@ class Card extends PureComponent {
         }
     }
 	render() {
-        const { asset, isPlaying, preventDefaultClick, card: { frontSide, hidden } } = this.props;
+        const { isPlaying, preventDefaultClick, card: { frontSide, hidden, title } } = this.props;
         let className = 'card';
 
         if (frontSide) {
@@ -22,12 +23,17 @@ class Card extends PureComponent {
         };
 
         return (
-            <li className={className} onClick={this.clickHandler}>
-                <div className="card__back"></div>
-                <div className="card__face">
-                    {<img className="card__image" src={asset.src} alt=""/>}
-                </div>
-            </li>
+            
+            <AssetsContext.Consumer>
+                {(assets) => (
+                    <li className={className} onClick={this.clickHandler}>
+                        <div className="card__back"></div>
+                        <div className="card__face">
+                            {<img className="card__image" src={assets[title].src} alt=""/>}
+                        </div>
+                    </li>
+                )}
+            </AssetsContext.Consumer>
 		)
     }
 }

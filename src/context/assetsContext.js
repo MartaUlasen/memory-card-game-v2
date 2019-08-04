@@ -1,7 +1,5 @@
 import React from 'react';
 
-const AssetsContext = React.createContext({
-    urls: [],
-});
+const AssetsContext = React.createContext([]);
 
 export default AssetsContext;

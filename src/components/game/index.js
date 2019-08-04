@@ -252,7 +252,6 @@ class Game extends Component {
             isPlaying, 
             gameOver,
         } = this.state;
-
         const { assets } = this.props;
 
         return (

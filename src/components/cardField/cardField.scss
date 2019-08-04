@@ -1,16 +1,18 @@
 .cards {
     display: block;
+    height: calc(100vh - 70px - 1rem);
 	padding: 0;
     list-style: none;
-    margin: 0 0 1rem;
+    margin: 0;
     .card {
         width: calc(100% / 6);
-        height: calc((100vh - 70px - 4px * 3 - 1rem) / 4);
+        height: 100%;
     }
     &--8х3 {
+        max-height: calc(600px + 4px * 2);
         .card {
             width: calc(100% / 8);
-            height: calc((100vh - 70px - 4px * 2 - 1rem) / 3);
+            height: 100%;
         }
     }
     &--4х6 {

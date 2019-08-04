@@ -1,22 +1,37 @@
 import { Component } from 'react';
-import Preloader from '@webdeveric/image-preloader';
+
+const loadImage = (src) => {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => {
+            resolve(img);
+        };
+        img.onerror = () => {
+            reject(new Error(`Failed to load image ${src}`));
+        }
+    })
+}
 
 class AssetsPreloader extends Component {
     state = {
         isLoading: false,
+        error: null,
         assets: [],
     }
-    
+
     preloadImages = () => {
         const { assetUrls } = this.props;
 
-        const loader = new Preloader( { 
-            images: assetUrls,
-        });
         this.setState({ isLoading: true });
-        loader.start().then(assets => {
-            this.setState({ isLoading: false, assets: assets.map(a => a.image)});
-        });
+
+        Promise.all(assetUrls.map(loadImage))
+            .then(assets => {
+                this.setState({ isLoading: false, assets });
+            })
+            .catch((error) => {
+                this.setState({ error });
+            });
     }
 
     componentDidMount = () => {
@@ -24,8 +39,7 @@ class AssetsPreloader extends Component {
     }
 
     render() {
-        const { isLoading, assets } = this.state;
-        return this.props.children(isLoading, assets);
+        return this.props.children({...this.state});
     }
 }
 

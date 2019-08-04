@@ -1,10 +1,8 @@
 import React, { PureComponent } from 'react';
 import Card from 'components/card';
 import './cardField.scss';
-import AssetsContext from 'context/assetsContext';
 
 class CardField extends PureComponent {
-    static contextType = AssetsContext;
 	render() {
         const { cards, cardClickHandler, preventDefaultClick, isPlaying } = this.props;
         let className = '';
@@ -22,18 +20,14 @@ class CardField extends PureComponent {
             <ul className={className}>
                 {cards.map((item, index) => {
                     return (
-                        <AssetsContext.Consumer key={index}>
-                            {(value) => (
-                                <Card
-                                    asset={value[item.title]}
-                                    index={index}
-                                    card={item}
-                                    isPlaying={isPlaying}
-                                    cardClickHandler={cardClickHandler}
-                                    preventDefaultClick={preventDefaultClick}
-                            /> 
-                            )}
-                        </AssetsContext.Consumer>
+                        <Card
+                            key={index}
+                            index={index}
+                            card={item}
+                            isPlaying={isPlaying}
+                            cardClickHandler={cardClickHandler}
+                            preventDefaultClick={preventDefaultClick}
+                        />
                     )
                 })}
             </ul>
