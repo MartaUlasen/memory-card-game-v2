@@ -7,7 +7,7 @@ import AssetsPreloader from './components/assetsPreloader';
 import './index.scss';
 
 ReactDOM.render(
-    <AssetsPreloader assetUrls={CARD_IMAGES}>
+    <AssetsPreloader assets={CARD_IMAGES}>
         {({isLoading, error, assets}) => isLoading
             ? <Loader className="icon-loading" size={30} />
             : <Game assets={assets} />

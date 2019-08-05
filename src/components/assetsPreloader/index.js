@@ -21,8 +21,9 @@ class AssetsPreloader extends Component {
     }
 
     preloadImages = () => {
-        const { assetUrls } = this.props;
-
+        const { assets } = this.props;
+        const assetUrls = assets.map(asset => asset.src);
+        
         this.setState({ isLoading: true });
 
         Promise.all(assetUrls.map(loadImage))
