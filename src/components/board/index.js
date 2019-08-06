@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Timer from 'components/timer';
 import CardField from 'components/cardField';
-import './board.scss';
+import './style.scss';
 
 class Board extends Component {
 	render() {

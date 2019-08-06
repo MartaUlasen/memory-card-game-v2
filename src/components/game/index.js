@@ -3,8 +3,7 @@ import Menu from 'components/menu';
 import Board from 'components/board';
 import Score from 'components/score';
 import { LEVEL_PARAMS } from 'const';
-import AssetsContext from 'context/assetsContext';
-import './game.scss';
+import './style.scss';
 
 const FLIP_CARD_TIME = 300;
 
@@ -51,6 +50,10 @@ class Game extends Component {
         this.setState({ 
             isPlaying: true,
         });
+    }
+    
+    watchCardsDescription = () => {
+        this.changeStateOfMenu(false);
     }
 
     pauseResumeGame = () => {
@@ -252,32 +255,30 @@ class Game extends Component {
             isPlaying, 
             gameOver,
         } = this.state;
-        const { assets } = this.props;
 
         return (
             <div className="game">
-                <AssetsContext.Provider value={assets}>
-                    {
-                        showMenu === true 
-                            ? <Menu 
-                                startPlay={this.startGame}
+                {
+                    showMenu === true 
+                        ? <Menu 
+                            startPlay={this.startGame}
+                            watchCardsDescription={this.watchCardsDescription}
+                        />
+                        : gameOver !== null
+                            ? <Score 
+                                gameOver={gameOver}
+                                startAnotherGame={this.startAnotherGame}
                             />
-                            : gameOver !== null
-                                ? <Score 
-                                    gameOver={gameOver}
-                                    startAnotherGame={this.startAnotherGame}
-                                />
-                                : <Board
-                                    timeout={timeout}
-                                    levelParams={levelParams}
-                                    cards={cards}
-                                    cardClickHandler={this.cardClickHandler}
-                                    preventDefaultClick={preventDefaultClick}
-                                    isPlaying={isPlaying}
-                                    pauseResumeGame={this.pauseResumeGame}
-                                />
-                    }
-                </AssetsContext.Provider>
+                            : <Board
+                                timeout={timeout}
+                                levelParams={levelParams}
+                                cards={cards}
+                                cardClickHandler={this.cardClickHandler}
+                                preventDefaultClick={preventDefaultClick}
+                                isPlaying={isPlaying}
+                                pauseResumeGame={this.pauseResumeGame}
+                            />
+                }
             </div>
 		)
     }

@@ -1,4 +1,4 @@
-const LEVEL_PARAMS = {
+export const LEVEL_PARAMS = {
 	easy: { 
         timeout: 180,
         countOfPairs: 12,
@@ -13,7 +13,7 @@ const LEVEL_PARAMS = {
     },
 };
 
-const CARD_IMAGES = [
+export const CARDS = [
     {
         title: "Belém Tower in Lisbon",
         description: `Belém Tower (Portuguese: Torre de Belém, officially 
@@ -219,5 +219,3 @@ const CARD_IMAGES = [
         src: "img/12.jpg"
     },
 ];
-
-export { LEVEL_PARAMS, CARD_IMAGES };

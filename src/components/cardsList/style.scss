@@ -1,0 +1,27 @@
+.cards-description {
+    margin: 0;
+    padding: 1rem;
+    list-style: none;
+}
+
+.cards-description-item {
+    display: flex;
+    margin-bottom: 12px;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    &__img {
+        width: 120px;
+        height: calc(120px * 4 / 3);
+        margin-right: 8px;
+        border-radius: 10px;
+        box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.5);
+        font-size: 1rem;
+        object-fit: cover;
+    }
+    &__description {
+        font-size: 1rem;
+        font-family: 'Lato', sans-serif;
+        font-weight: 400;
+    }
+}

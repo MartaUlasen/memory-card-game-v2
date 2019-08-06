@@ -1,6 +1,6 @@
 import React, { PureComponent  } from 'react';
-import AssetsContext from 'context/assetsContext';
-import './card.scss';
+import { withAssets } from 'components/assetsPreloader/context';
+import './style.scss';
 
 class Card extends PureComponent {
     clickHandler = () => {
@@ -11,7 +11,12 @@ class Card extends PureComponent {
         }
     }
 	render() {
-        const { isPlaying, preventDefaultClick, card: { frontSide, hidden, title } } = this.props;
+        const {
+            assets,
+            isPlaying,
+            preventDefaultClick,
+            card: { frontSide, hidden, title },
+        } = this.props;
         let className = 'card';
 
         if (frontSide) {
@@ -23,19 +28,14 @@ class Card extends PureComponent {
         };
 
         return (
-            
-            <AssetsContext.Consumer>
-                {(assets) => (
-                    <li className={className} onClick={this.clickHandler}>
-                        <div className="card__back"></div>
-                        <div className="card__face">
-                            {<img className="card__image" src={assets[title].src} alt=""/>}
-                        </div>
-                    </li>
-                )}
-            </AssetsContext.Consumer>
-		)
+            <li className={className} onClick={this.clickHandler}>
+                <div className="card__back"></div>
+                <div className="card__face">
+                    {<img className="card__image" src={assets[title].src} alt=""/>}
+                </div>
+            </li>
+        )
     }
 }
 
-export default Card;
+export default withAssets(Card);

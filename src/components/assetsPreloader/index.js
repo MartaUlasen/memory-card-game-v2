@@ -1,4 +1,5 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
+import Context from './context';
 
 const loadImage = (src) => {
     return new Promise((resolve, reject) => {
@@ -15,23 +16,23 @@ const loadImage = (src) => {
 
 class AssetsPreloader extends Component {
     state = {
-        isLoading: false,
+        isLoading: true,
         error: null,
         assets: [],
     }
 
     preloadImages = () => {
-        const { assets } = this.props;
-        const assetUrls = assets.map(asset => asset.src);
-        
-        this.setState({ isLoading: true });
+        const { urls } = this.props;
 
-        Promise.all(assetUrls.map(loadImage))
+        Promise.all(urls.map(loadImage))
             .then(assets => {
-                this.setState({ isLoading: false, assets });
+                this.setState({ assets });
             })
             .catch((error) => {
                 this.setState({ error });
+            })
+            .finally(() => {
+                this.setState({ isLoading: false });
             });
     }
 
@@ -40,7 +41,11 @@ class AssetsPreloader extends Component {
     }
 
     render() {
-        return this.props.children({...this.state});
+        return (
+            <Context.Provider value={this.state.assets}>
+                {this.props.children({...this.state})}
+            </Context.Provider>
+        )
     }
 }
 

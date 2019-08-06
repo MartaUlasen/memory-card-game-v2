@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import Card from 'components/card';
-import './cardField.scss';
+import './style.scss';
 
 class CardField extends PureComponent {
 	render() {
