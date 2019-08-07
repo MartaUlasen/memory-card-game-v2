@@ -4,6 +4,7 @@
   "private": false,
   "homepage": "https://martaulasen.github.io/memory-card-game-v2",
   "dependencies": {
+    "google-maps-react": "git+https://git@github.com/MartaUlasen/google-maps-react.git",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

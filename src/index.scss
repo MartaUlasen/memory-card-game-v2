@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet');
 
+* {
+    box-sizing: border-box;
+}
 body {
     margin: 0;
     background-color: #f6e6d7;
@@ -20,6 +23,7 @@ code {
     background-color: transparent;
     font-size: 1.4rem;
     font-family: 'Lato', sans-serif;
+    color: #4f433c;
     border: 2px dashed #b0a093;
     transition: border 0.2s ease-in;
     &:hover {
