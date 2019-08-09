@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ArrowLeft } from 'react-feather';
+import { Scrollbars } from 'react-custom-scrollbars';
 import { withAssets } from 'components/assetsPreloader/context';
 import MapContainer from 'components/mapContainer';
 import './style.scss';
@@ -29,9 +30,8 @@ class CardsList extends PureComponent {
     }
 	render() {
         const { data, assets } = this.props;
-        
         const style = {
-            width: '75%',
+            width: '100%',
         }
         return (
             <div className="cards-list">
@@ -40,28 +40,33 @@ class CardsList extends PureComponent {
                     Back
                 </NavLink>
                 <div className="cards-description-wrapper">
-                    <ul className="cards-description">
-                        {data.map((item, index) => {
-                            const { currentCardIndex } = this.state;
-                            const className = currentCardIndex === index 
-                                ? 'cards-description-item cards-description-item--active'
-                                : 'cards-description-item';
-                            
-                            return (
-                                <li 
-                                    className={className} 
-                                    key={index} 
-                                    onClick={() => this.setCurrentCard(item)}
-                                >
-                                    <img className="cards-description-item__img" src={assets[index].src} alt="" />
-                                    <span className="cards-description-item__title">{item.title}</span>
-                                    <div className="cards-description-item__description">{item.description}</div>
-                                </li>
-                            )
-                        })}
-                    </ul>
+                    <div className="cards-description">
+                        <Scrollbars style={{ width: "100%", height: "100%" }}>
+                            <ul className="cards-description-list">
+                                {data.map((item, index) => {
+                                    const { currentCardIndex } = this.state;
+                                    const className = currentCardIndex === index 
+                                        ? 'cards-description-item cards-description-item--active'
+                                        : 'cards-description-item';
+                                    
+                                    return (
+                                        <li 
+                                            className={className} 
+                                            key={index} 
+                                            onClick={() => this.setCurrentCard(item)}
+                                        >
+                                            <img className="cards-description-item__img" src={assets[index].src} alt="" />
+                                            <span className="cards-description-item__title">{item.title}</span>
+                                            <div className="cards-description-item__description">{item.description}</div>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </Scrollbars>
+
+                    </div>
                     <div className="cards-list__map">
-                        <MapContainer style={style} {...this.state}/>
+                        <MapContainer style={style} {...this.state} />
                     </div>
 
                 </div>

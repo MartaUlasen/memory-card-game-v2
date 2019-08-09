@@ -7,6 +7,7 @@
     "google-maps-react": "git+https://git@github.com/MartaUlasen/google-maps-react.git",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.8.6",
     "react-feather": "^2.0.3",
     "react-router-dom": "^5.0.1",
