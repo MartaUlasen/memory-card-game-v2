@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import Timer from 'components/timer';
 import CardField from 'components/cardField';
 import './style.scss';
 
 class Board extends Component {
+    menuButtonHandler = () => {
+        const { stopGame, startAnotherGame } = this.props;
+        stopGame();
+        startAnotherGame();
+    }
 	render() {
         const {
             timeout,
@@ -14,14 +20,25 @@ class Board extends Component {
             isPlaying,
             pauseResumeGame,
         } = this.props;
+
         const buttonTitle = isPlaying ? 'Pause' : "Resume";
         
 		return (
             <div className="board">
                 <div className="board__header">
-                    <Timer 
-                        timeout={timeout}
-                    />
+                    <div className="board__timer">
+                        <Timer 
+                            className="board__timer"
+                            timeout={timeout}
+                        />
+                    </div>
+                    <NavLink 
+                        to="/" 
+                        className="board__menu-button button link" 
+                        onClick={this.menuButtonHandler}
+                        >
+                        Menu
+                    </NavLink>
                     <button 
                         className="button"
                         type="button"

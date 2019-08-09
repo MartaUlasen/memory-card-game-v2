@@ -213,7 +213,7 @@ class Game extends Component {
         this.clearGameOverState();
     }
     
-    stop = () => {
+    stopGame = () => {
         this.setState({ 
             timeout : 0,
             isPlaying: false,
@@ -231,7 +231,7 @@ class Game extends Component {
         } else if(isPlaying === false) {
             this.pauseTimer();
         } else if (timeout === 0) {
-            this.stop();
+            this.stopGame();
             this.isGameLose();
 		}
     }
@@ -277,6 +277,8 @@ class Game extends Component {
                                 preventDefaultClick={preventDefaultClick}
                                 isPlaying={isPlaying}
                                 pauseResumeGame={this.pauseResumeGame}
+                                stopGame={this.stopGame}
+                                startAnotherGame={this.startAnotherGame}
                             />
                 }
             </div>

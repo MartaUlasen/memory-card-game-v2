@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import './style.scss';
 
 class Score extends PureComponent {
     onClickHandler = () => {

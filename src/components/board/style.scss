@@ -5,7 +5,14 @@
         justify-content: space-between;
         padding: 1rem 0;
     }
-    
+    &__timer {
+        min-width: 120px;
+        text-align: left;
+    }
+    &__menu-button {
+        margin-right: 20px;
+        margin-left: auto;
+    }
     @media only screen and (min-width: 768px) {
         padding: 0 2rem;
 	}

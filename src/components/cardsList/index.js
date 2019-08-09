@@ -63,7 +63,7 @@ class CardsList extends PureComponent {
                                 })}
                             </ul>
                         </Scrollbars>
-
+                        <div className="cards-description-substrate"></div>
                     </div>
                     <div className="cards-list__map">
                         <MapContainer style={style} {...this.state} />
