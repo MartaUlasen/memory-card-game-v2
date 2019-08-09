@@ -3,7 +3,9 @@
 
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
+
 body {
     margin: 0;
     background-color: #f6e6d7;

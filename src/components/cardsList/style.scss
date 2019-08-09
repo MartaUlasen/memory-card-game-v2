@@ -10,7 +10,7 @@
     &__back-button {
         display: flex;
         align-items: center;
-        max-width: 80px;
+        max-width: 100px;
     }
     &__icon {
         stroke: #4f433c;
@@ -35,7 +35,6 @@
 .cards-description {
     width: 100%;
     height: calc(54% - 1rem);
-    margin: 0;
     margin: 1rem 0;
     padding: 0;
     list-style: none;
@@ -44,13 +43,16 @@
         rgba(0,0,0,0) 0%,
         rgba(176, 160, 147, 0.1) 92%,
         rgba(176, 160, 147, 0.6) 100%);
-    overflow-y: scroll;
     @media only screen and (min-width: 1025px) {
         height: 100%;
         width: calc(30% - 1rem);
         margin-right: 1rem;
         margin-bottom: 0;
 	}
+}
+.cards-description-list {
+    margin: 0 1rem 0 0;
+    padding: 0;
 }
 
 .cards-description-item {
@@ -64,7 +66,7 @@
         border 0.2s ease-in,
         background-color 0.2s ease-in;
     &:hover, &--active {
-        background-color: rgba(176, 160, 147, 0.3);;
+        background-color: lighten(#f6e6d7, 4%);
         border: 2px solid #4f433c;
         cursor: pointer;
     }

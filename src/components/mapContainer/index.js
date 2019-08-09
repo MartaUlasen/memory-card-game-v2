@@ -15,7 +15,10 @@ export class MapContainer extends Component {
         
         return (
             <Map 
-                google={this.props.google} 
+                google={this.props.google}
+                mapTypeControl={false}
+                zoomControl={false}
+                fullscreenControl={false}
                 zoom={5}
                 style={style}
                 initialCenter={{
@@ -39,4 +42,4 @@ export class MapContainer extends Component {
 
 export default GoogleApiWrapper({
     apiKey: ('AIzaSyAqtYywxGqkXslwlFMVF_CTAkNIUQln0-g')
-})(MapContainer)
+})(MapContainer);
