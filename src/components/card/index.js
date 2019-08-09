@@ -1,5 +1,6 @@
 import React, { PureComponent  } from 'react';
 import { withAssets } from 'components/assetsPreloader/context';
+import classNames from 'classnames/bind';
 import './style.scss';
 
 class Card extends PureComponent {
@@ -17,15 +18,13 @@ class Card extends PureComponent {
             preventDefaultClick,
             card: { frontSide, hidden, title },
         } = this.props;
-        let className = 'card';
 
-        if (frontSide) {
-            className = 'card card--flipped';
-        } else if (hidden) {
-            className = 'card card--hidden';
-        } else if (!frontSide && !preventDefaultClick && isPlaying) {
-            className = className + ' card--clickable';
-        };
+        const className = classNames({
+            card: true,
+            'card--flipped': frontSide,
+            'card--hidden': hidden,
+            'card--clickable': !frontSide && !preventDefaultClick && isPlaying,
+        });
 
         return (
             <li className={className} onClick={this.clickHandler}>
