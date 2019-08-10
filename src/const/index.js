@@ -1,14 +1,14 @@
 export const LEVEL_PARAMS = {
     easy: {
-        timeout: 180,
-        countOfPairs: 12,
-    },
-    medium: {
         timeout: 120,
         countOfPairs: 12,
     },
+    medium: {
+        timeout: 80,
+        countOfPairs: 12,
+    },
     hard: {
-        timeout: 90,
+        timeout: 40,
         countOfPairs: 12,
     },
 };
