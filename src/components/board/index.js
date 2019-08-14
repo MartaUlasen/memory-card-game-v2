@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import Timer from 'components/timer';
 import CardField from 'components/cardField';
-import './style.scss';
+import { Button } from 'style';
+import { StyledBoard, Header, BoardTimer, MenuButton } from './style';
 
 class Board extends Component {
     menuButtonHandler = () => {
@@ -24,29 +24,24 @@ class Board extends Component {
         const buttonTitle = isPlaying ? 'Pause' : "Resume";
         
 		return (
-            <div className="board">
-                <div className="board__header">
-                    <div className="board__timer">
-                        <Timer 
-                            className="board__timer"
-                            timeout={timeout}
-                        />
-                    </div>
-                    <NavLink 
-                        to="/" 
-                        className="board__menu-button button link" 
+            <StyledBoard>
+                <Header>
+                    <BoardTimer>
+                        <Timer timeout={timeout} />
+                    </BoardTimer>
+                    <MenuButton 
+                        to="/"
                         onClick={this.menuButtonHandler}
                         >
                         Menu
-                    </NavLink>
-                    <button 
-                        className="button"
+                    </MenuButton>
+                    <Button
                         type="button"
                         onClick={pauseResumeGame}
                     >
                         {buttonTitle}
-                    </button>
-                </div>
+                    </Button>
+                </Header>
                 <CardField
                     isPlaying={isPlaying}
                     levelParams={levelParams}
@@ -54,7 +49,7 @@ class Board extends Component {
                     cardClickHandler={cardClickHandler}
                     preventDefaultClick={preventDefaultClick}
                 />
-            </div>
+            </StyledBoard>
 		)
     }
 }

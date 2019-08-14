@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import { LEVEL_PARAMS } from 'const';
-import './style.scss';
+import { StyledMenu, Item } from './style';
+import { Title, Button, StyledLink } from 'style';
 
 export default class Menu extends Component {
     buttonLevelHandler = (level) => {
@@ -16,22 +16,50 @@ export default class Menu extends Component {
 
 	render() {
 		return (
-            <div className="menu">
-                <div className="title">Select the difficulty of the game</div>
-                <ul className="menu__list">
-                    <li className="menu__item">
-                        <button className="button" type="button" onClick={() => {this.buttonLevelHandler(LEVEL_PARAMS.easy)}}>Easy</button>
-                    </li>
-                    <li className="menu__item">
-                        <button className="button" type="button" onClick={() => {this.buttonLevelHandler(LEVEL_PARAMS.medium)}}>Medium</button>
-                    </li>
-                    <li className="menu__item">
-                        <button className="button" type="button" onClick={() => {this.buttonLevelHandler(LEVEL_PARAMS.hard)}}>Hard</button>
-                    </li>
-                    <li className="menu__item">
-                        <NavLink to="/cards" className="button link" onClick={() => {this.buttonCardsDescriprionHandler()}} >Watch cards description</NavLink>
-                    </li>
-                </ul>
+            <div>
+                <Title>Select the difficulty of the game</Title>
+                <StyledMenu>
+                    <Item>
+                        <Button
+                            type="button"
+                            onClick={() => {
+                                this.buttonLevelHandler(LEVEL_PARAMS.easy)
+                            }}
+                        >
+                            Easy
+                        </Button>
+                    </Item>
+                    <Item>
+                        <Button
+                            type="button"
+                            onClick={() => {
+                                this.buttonLevelHandler(LEVEL_PARAMS.medium)
+                            }}
+                        >
+                            Medium
+                        </Button>
+                    </Item>
+                    <Item>
+                        <Button
+                            type="button"
+                            onClick={() => {
+                                this.buttonLevelHandler(LEVEL_PARAMS.hard)
+                            }}
+                        >
+                            Hard
+                        </Button>
+                    </Item>
+                    <Item>
+                        <StyledLink 
+                            to="/cards" 
+                            onClick={() => {
+                                this.buttonCardsDescriprionHandler()
+                            }} 
+                        >
+                            Watch cards description
+                        </StyledLink>
+                    </Item>
+                </StyledMenu>
             </div>
 		)
     }

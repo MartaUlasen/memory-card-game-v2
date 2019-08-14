@@ -3,7 +3,7 @@ import Menu from 'components/menu';
 import Board from 'components/board';
 import Score from 'components/score';
 import { LEVEL_PARAMS } from 'const';
-import './style.scss';
+import { StyledGame } from './style';
 
 const FLIP_CARD_TIME = 300;
 
@@ -270,7 +270,7 @@ class Game extends Component {
         } = this.state;
 
         return (
-            <div className="game">
+            <StyledGame>
                 {
                     showMenu === true 
                         ? <Menu 
@@ -294,7 +294,7 @@ class Game extends Component {
                                 startAnotherGame={this.startAnotherGame}
                             />
                 }
-            </div>
+            </StyledGame>
 		)
     }
 }

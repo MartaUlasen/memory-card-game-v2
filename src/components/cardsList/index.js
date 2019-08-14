@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
-import { NavLink } from 'react-router-dom';
-import { ArrowLeft } from 'react-feather';
 import { Scrollbars } from 'react-custom-scrollbars';
-import { withAssets } from 'components/assetsPreloader/context';
-import MapContainer from 'components/mapContainer';
-import './style.scss';
+import CardsListHeader from 'components/cardListHeader';
+import MapWrapper from 'components/mapWrapper';
+import Item from 'components/cardListItem';
+import {StyledcardList, Wrapper, CardDescription, CardSubstrate, List} from './style';
 
 class CardsList extends PureComponent {
     state = {
@@ -29,49 +28,35 @@ class CardsList extends PureComponent {
         })
     }
 	render() {
-        const { data, assets } = this.props;
-        const style = {
-            width: '100%',
-        }
+        const { data } = this.props;
         return (
-            <div className="cards-list">
-                <NavLink to="/" className="cards-list__back-button button link">
-                    <ArrowLeft className="cards-list__icon" size={24} />
-                    Back
-                </NavLink>
-                <div className="cards-description-wrapper">
-                    <div className="cards-description">
+            <StyledcardList>
+                <CardsListHeader />
+                <Wrapper>
+                    <CardDescription>
                         <Scrollbars style={{ width: "100%", height: "100%" }}>
-                            <ul className="cards-description-list">
+                            <List >
                                 {data.map((item, index) => {
                                     const { currentCardIndex } = this.state;
-                                    const className = currentCardIndex === index 
-                                        ? 'cards-description-item cards-description-item--active'
-                                        : 'cards-description-item';
-                                    
                                     return (
-                                        <li 
-                                            className={className} 
+                                        <Item 
+                                            currentCardIndex={currentCardIndex}
+                                            index={index}
                                             key={index} 
-                                            onClick={() => this.setCurrentCard(item)}
+                                            setCurrentCard={this.setCurrentCard}
+                                            item={item}
                                         >
-                                            <img className="cards-description-item__img" src={assets[index].src} alt="" />
-                                            <span className="cards-description-item__title">{item.title}</span>
-                                            <div className="cards-description-item__description">{item.description}</div>
-                                        </li>
+                                        </Item>
                                     )
                                 })}
-                            </ul>
+                            </List>
                         </Scrollbars>
-                        <div className="cards-description-substrate"></div>
-                    </div>
-                    <div className="cards-list__map">
-                        <MapContainer style={style} {...this.state} />
-                    </div>
-
-                </div>
-            </div>
+                        <CardSubstrate />
+                    </CardDescription>
+                    <MapWrapper {...this.state}/>
+                </Wrapper>
+            </StyledcardList>
 		)
     }
 }
-export default withAssets(CardsList);
+export default CardsList;

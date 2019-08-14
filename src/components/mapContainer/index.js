@@ -12,7 +12,6 @@ export class MapContainer extends Component {
             currentLng, 
             currentcardTitle 
         } = this.props;
-        
         return (
             <Map 
                 google={this.props.google}

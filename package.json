@@ -7,12 +7,14 @@
     "classnames": "^2.2.6",
     "google-maps-react": "git+https://git@github.com/MartaUlasen/google-maps-react.git",
     "node-sass": "^4.12.0",
+    "polished": "^3.4.1",
     "react": "^16.8.6",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.8.6",
     "react-feather": "^2.0.3",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "styled-components": "^4.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,6 +40,7 @@
     ]
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.10.6",
     "gh-pages": "2.0.1"
   }
 }

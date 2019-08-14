@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Title, Button} from 'style';
 
 class Score extends PureComponent {
     onClickHandler = () => {
@@ -9,17 +10,17 @@ class Score extends PureComponent {
 	render() {
         const { gameOver } = this.props;
 		return (
-            <div className="score">
-                <div className="title">
+            <div>
+                <Title>
                     {`You ${gameOver}!`}
-                </div>
-                <button 
+                </Title>
+                <Button 
                     className="button"
                     type="button" 
                     onClick={() => { this.onClickHandler(); }}
                 >
                     Start a new game?
-                </button>
+                </Button>
             </div>
 		)
     }
