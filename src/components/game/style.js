@@ -5,6 +5,6 @@ export const StyledGame = styled.div`
     flex-direction: column;
     justify-content: center;
     min-height: 100vh;
-    min-height: calc(var(--vh, 1vh) * 100);
+    height: 100%;
     text-align: center;
 `;

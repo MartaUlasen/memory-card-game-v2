@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledcardList = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 100%;
     padding: 1rem;
     @media only screen and (min-width: 768px) {
         padding: 1rem 2rem;

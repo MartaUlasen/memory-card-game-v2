@@ -7,11 +7,12 @@ export const Title = styled.div`
 `;
 
 export const Button = styled.button`
-    min-width: 100px;
+    min-width: 80px;
     padding: 2px 8px;
     background-color: transparent;
     font-size: 1.4rem;
     font-family: 'Lato', sans-serif;
+    font-weight: 500;
     color: #4f433c;
     border: 2px dashed #b0a093;
     transition: border 0.2s ease-in;
@@ -19,10 +20,13 @@ export const Button = styled.button`
         border: 2px dashed #4f433c;
         cursor: pointer;
     }
+    @media only screen and (min-width: 374px) {
+        min-width: 100px;
+	}
 `;
 
 export const StyledLink = styled(NavLink)`
-    min-width: 100px;
+    min-width: 80px;
     padding: 2px 8px;
     font-family: 'Lato', sans-serif;
     text-decoration: none;
@@ -34,6 +38,9 @@ export const StyledLink = styled(NavLink)`
     &:hover {
         border: 2px dashed #4f433c;
     }
+    @media only screen and (min-width: 374px) {
+        min-width: 100px;
+	}
 `;
 
 export const StyledLoader = styled(Loader)`

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledCardFileld = styled.ul`
     display: block;
-    height: calc(100vh - 70px - 1rem);
+    height: calc(100% - 70px - 1rem);
 	padding: 0;
     list-style: none;
     margin: 0;

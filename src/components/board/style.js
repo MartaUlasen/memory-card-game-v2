@@ -26,6 +26,9 @@ export const BoardTimer = styled.div`
 `;
 
 export const MenuButton = styled(StyledLink)`
-    margin-right: 20px;
+    margin-right: 8px;
     margin-left: auto;
+    @media only screen and (min-width: 768px) {
+        margin-right: 20px;
+	}
 `;

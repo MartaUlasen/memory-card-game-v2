@@ -27,20 +27,7 @@ class Game extends Component {
         id: null,
     }
 
-    timerId = null
-    
-    componentDidMount () {
-        window.addEventListener('resize', this.setVh);
-    }
-    
-    componentWillUnmount () {
-        window.addEventListener('resize', this.setVh);
-    }
-
-    setVh = () => {
-        let vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-    }
+    timerId = null;
 
     changeStateOfMenu = (showMenu) => {
         this.setState({ showMenu });
