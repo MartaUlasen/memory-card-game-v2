@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
 import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Info} from './style';
 
 export class MapContainer extends Component {
-    render() {
+	render() {
         const style = {
             width: '100%',
             height: '100%'
         }
-        const { 
+        const {
+            google,
+            styles,
             currentLat, 
             currentLng, 
             currentcardTitle 
         } = this.props;
+
         return (
             <Map 
-                google={this.props.google}
+                google={google}
+                styles={styles}
                 mapTypeControl={false}
                 zoomControl={false}
                 fullscreenControl={false}
@@ -34,6 +39,9 @@ export class MapContainer extends Component {
                     name={currentcardTitle}
                     position={{lat: currentLat, lng: currentLng}}
                 />
+                <Info>
+                    {currentcardTitle}
+                </Info>
             </Map>
         );
     }

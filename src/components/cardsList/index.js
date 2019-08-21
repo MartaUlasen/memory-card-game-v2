@@ -4,6 +4,7 @@ import CardsListHeader from 'components/cardListHeader';
 import MapWrapper from 'components/mapWrapper';
 import Item from 'components/cardListItem';
 import {StyledcardList, Wrapper, CardDescription, CardSubstrate, List} from './style';
+import mapStyles from 'const/gmapStyles';
 
 class CardsList extends PureComponent {
     state = {
@@ -53,7 +54,7 @@ class CardsList extends PureComponent {
                         </Scrollbars>
                         <CardSubstrate />
                     </CardDescription>
-                    <MapWrapper {...this.state}/>
+                    <MapWrapper {...this.state} styles={mapStyles} />
                 </Wrapper>
             </StyledcardList>
 		)
