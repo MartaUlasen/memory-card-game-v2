@@ -13,6 +13,7 @@ export const Info = styled.div`
     @media only screen and (min-width: 768px) {
         top: 8px;
         right: 8px;
-        font-size: 1rem; 
+        padding: 0 8px;
+        font-size: 1.25rem; 
 	}
 `;
