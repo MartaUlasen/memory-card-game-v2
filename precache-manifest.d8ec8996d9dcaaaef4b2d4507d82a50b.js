@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4b0bc94d5b177556e8d3c6d025a2db72",
+    "revision": "eab1337ba20ea3916f4a9d1a1109a321",
     "url": "/memory-card-game-v2/index.html"
   },
   {
-    "revision": "4f9fd1fed7f17a9d5763",
+    "revision": "4b54ff07202f8b2663ca",
     "url": "/memory-card-game-v2/static/css/main.297a1c18.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/memory-card-game-v2/static/js/2.0c43cccf.chunk.js"
   },
   {
-    "revision": "4f9fd1fed7f17a9d5763",
-    "url": "/memory-card-game-v2/static/js/main.d63f6c27.chunk.js"
+    "revision": "4b54ff07202f8b2663ca",
+    "url": "/memory-card-game-v2/static/js/main.31dcebbf.chunk.js"
   },
   {
     "revision": "d421880b54f78cc35b5d",
