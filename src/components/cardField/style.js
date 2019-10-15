@@ -9,12 +9,14 @@ export const StyledCardFileld = styled.ul`
     .card {
         width: calc(100% / 6);
         height: 100%;
+        margin-right: 8px;
+        
     }
     &.cards--8х3 {
         max-height: calc(600px + 4px * 2);
         .card {
-            width: calc(100% / 8);
-            height: 100%;
+            width: calc((100% - 64px) / 8);
+            height: calc(100% / 3);
         }
     }
     &.cards--4х6 {
@@ -30,11 +32,13 @@ export const StyledCardFileld = styled.ul`
         list-style: none;
         .card {
             width: 100%;
+            margin-right: 0;
         }
         &.cards--8х3 {
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
             .card {
                 width: 100%;
+                height: auto;
             }
         }
         &.cards--4х6 {

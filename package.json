@@ -7,8 +7,10 @@
     "classnames": "^2.2.6",
     "google-maps-react": "git+https://git@github.com/MartaUlasen/google-maps-react.git",
     "node-sass": "^4.12.0",
+    "object-fit-images": "^3.2.4",
     "polished": "^3.4.1",
     "react": "^16.8.6",
+    "react-app-polyfill": "^1.0.2",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.8.6",
     "react-feather": "^2.0.3",
@@ -36,7 +38,8 @@
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "ie 11"
     ]
   },
   "devDependencies": {

@@ -28,10 +28,13 @@ class AssetsPreloader extends Component {
             .then(assets => {
                 this.setState({ assets });
             })
+            .then(() => {
+                this.setState({ isLoading: false });
+            })
             .catch((error) => {
                 this.setState({ error });
             })
-            .finally(() => {
+            .then(() => {
                 this.setState({ isLoading: false });
             });
     }

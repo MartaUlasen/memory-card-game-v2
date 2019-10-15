@@ -4,6 +4,7 @@ const FLIP_TIME = "0.2s";
 
 export const CardStyled = styled.li`
     display: inline-block;
+    position: relative;
     text-align: left;
     transition: transform ${FLIP_TIME} ease-in;
     transform-style: preserve-3d;
@@ -67,6 +68,7 @@ export const CardFace = styled.div`
 
 export const CardImage = styled.img`
     object-fit: cover;
+	font-family: 'object-fit: cover;';
     width: 100%;
     height: 100%;
 `;
