@@ -6,7 +6,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "google-maps-react": "git+https://git@github.com/MartaUlasen/google-maps-react.git",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "object-fit-images": "^3.2.4",
     "polished": "^3.4.1",
     "react": "^16.8.6",
